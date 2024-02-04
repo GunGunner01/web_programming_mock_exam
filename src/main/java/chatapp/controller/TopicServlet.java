@@ -1,5 +1,5 @@
-// Task 2
-
+// ---------------------------- task 2 ------------------------------------
+// http://localhost:8080/api/topics
 package chatapp.controller;
 
 import chatapp.model.ChatService;
@@ -28,3 +28,4 @@ public class TopicServlet extends HttpServlet {
         objectMapper.writeValue(response.getOutputStream(), topics);
     }
 }
+// ------------------------ end task 2 ------------------------------------

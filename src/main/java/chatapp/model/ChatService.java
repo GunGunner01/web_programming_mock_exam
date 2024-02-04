@@ -61,12 +61,25 @@ public class ChatService {
 	// ------------------------ end task 1 ------------------------------------
 
 
-	// Task 2
+	// ---------------------------- task 2 ------------------------------------
 	public List<String> getTopics() {
 		return messages.stream()
 				.map(ChatMessage::getTopic) // assuming there is a getTopic method in ChatMessage class
 				.distinct()
 				.collect(Collectors.toList());
+
+		/*
+			Alternativ
+		 */
+//		List<String> topics = new ArrayList<>();
+//		for (ChatMessage message : messages) {
+//			String topic = message.getTopic();
+//			// Check if the list already contains the topic to avoid duplicates
+//			if (!topics.contains(topic)) {
+//				topics.add(topic);
+//			}
+//		}
+//		return topics;
 	}
 	// ------------------------ end task 2 ------------------------------------
 
