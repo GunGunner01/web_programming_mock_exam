@@ -31,7 +31,7 @@ public class ChatService {
 		return messages;
 	}
 
-	// Task 1
+	// ---------------------------- task 1 ------------------------------------
 	public List<ChatMessage> getMessages(String topic) {
 		// Check if topic is null or empty, return all messages in that case
 		if (topic == null || topic.trim().isEmpty()) {
@@ -41,6 +41,21 @@ public class ChatService {
 			return getMessages().stream()
 					.filter(message -> topic.equals(message.getTopic()))
 					.collect(Collectors.toList());
+
+			/*
+				Alternativ
+			 */
+//			// Create a new list to hold messages that match the topic
+//			List<ChatMessage> filteredMessages = new ArrayList<>();
+//			// Loop through all messages
+//			for (ChatMessage message : messages) {
+//				// If the message topic matches the specified topic, add it to the list
+//				if (topic.equals(message.getTopic())) {
+//					filteredMessages.add(message);
+//				}
+//			}
+//			// Return the list of filtered messages
+//			return filteredMessages;
 		}
 	}
 	// ------------------------ end task 1 ------------------------------------
