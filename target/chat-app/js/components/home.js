@@ -11,7 +11,7 @@ export class Home {
             <select id="topicSelect">
                 <option value="">Select topic</option>
             </select>
-            <input id="newTopic" placeholder="Enter new topic" />
+            <input id="newTopic" placeholder="Enter new topic" /> // task 7
         `;
 
         this.topicSelect = this.view.querySelector('#topicSelect');
@@ -24,6 +24,7 @@ export class Home {
             }
         };
 
+        // --------------------------- task 7 ------------------------------------
         this.newTopicInput.onkeypress = event => {
             if (event.key === 'Enter') {
                 const newTopic = this.newTopicInput.value.trim();
@@ -33,6 +34,7 @@ export class Home {
                 }
             }
         };
+        // ------------------------ end task 7 ------------------------------------
 
         this.populateTopics();
     }
