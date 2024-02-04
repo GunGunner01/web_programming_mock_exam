@@ -1,0 +1,50 @@
+body {
+	background-color: white;
+	color: black;
+	font-family: sans-serif;
+	margin: auto;
+	max-width: 480px;
+	padding: 20px;
+}
+main {
+	margin: 20px 0;
+}
+h1 {
+	font-size: 2em;
+	font-weight: normal;
+}
+a {
+	color: royalblue;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+input, select {
+	border: 1px solid grey;
+	border-radius: 5px;
+	font: inherit;
+	height: 35px;
+	padding: 0 5px 0 5px;
+}
+input#message {
+	width: 100%;
+}
+
+ul {
+	list-style-type: none;
+	margin: 20px 0;
+	padding: 0;
+}
+li {
+	border-bottom: 1px solid grey;
+	padding: 10px 0;
+	width: 100%;
+}
+
+.icon {
+	cursor: pointer;
+	font-size: 2em;
+}
+.error {
+	color: red;
+}

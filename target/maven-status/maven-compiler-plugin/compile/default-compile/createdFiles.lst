@@ -1,0 +1,6 @@
+chatapp\model\ChatService.class
+chatapp\model\ChatMessage.class
+chatapp\filter\LoggingFilter.class
+chatapp\controller\MessageServlet.class
+chatapp\controller\ObjectMapperFactory.class
+chatapp\filter\MediaTypeFilter.class
