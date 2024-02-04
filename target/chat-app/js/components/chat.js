@@ -7,16 +7,16 @@ export class Chat extends Component {
         <h1>Chat - <span id="topicTitle"></span></h1>
         <input id="message" placeholder="Enter new message">
         <ul></ul>
-        <a href="#/" id="homeLink">Back to home</a> // task 5
+        <a href="#/" id="homeLink">Back to home</a> // task 6
     `;
 
 	#refreshIntervalId = null; // Store the interval ID for clearing later
 	#topic = null; // Store the current topic // task 5
 
-	constructor(topic) {
+	constructor(topic) { //task 6
 		super('Chat', Chat.#template);
-		this.#topic = topic; // Set the current topic from the constructor parameter // task 5
-		this._select('#topicTitle').textContent = this.#topic; // Set the topic title // task 5
+		this.#topic = topic; // Set the current topic from the constructor parameter // task 6
+		this._select('#topicTitle').textContent = this.#topic; // Set the topic title // task 6
 		this.#fetchMessages();
 		this._select('input').onkeypress = event => {
 			if (event.key === 'Enter') this.#postMessage();
@@ -26,7 +26,7 @@ export class Chat extends Component {
 	}
 
 	#fetchMessages() {
-		service.getMessages(this.#topic) // Fetch messages for the current topic // task 5
+		service.getMessages(this.#topic) // Fetch messages for the current topic // task 6
 			.then(messages => this.#renderMessages(messages))
 			.catch(() => footer.innerHTML = 'Unexpected error');
 	}
@@ -35,7 +35,7 @@ export class Chat extends Component {
 		let list = this._select('ul');
 		list.innerHTML = '';
 		for (let message of messages) {
-			if (message.topic === this.#topic) { // Check if the message belongs to the current topic // task 5
+			if (message.topic === this.#topic) { // Check if the message belongs to the current topic // task 6
 				let item = document.createElement('li');
 				item.innerHTML = message.text;
 				list.append(item);
@@ -47,7 +47,7 @@ export class Chat extends Component {
 		let input = this._select('#message');
 		let message = {
 			text: input.value,
-			topic: this.#topic // Assign the topic to the message before sending //task 5
+			topic: this.#topic // Assign the topic to the message before sending //task 6
 		};
 		service.postMessage(message)
 			.then(() => this.#fetchMessages())
