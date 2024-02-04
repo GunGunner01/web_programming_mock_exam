@@ -20,14 +20,18 @@ public class MessageServlet extends HttpServlet {
 	private static final ObjectMapper objectMapper = ObjectMapperFactory.createObjectMapper();
 	private static final Logger logger = Logger.getLogger(MessageServlet.class.getName());
 
+	// Task 1
+	// http://localhost:8080/api/messages
+	// http://localhost:8080/api/messages?topic=Java
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		logger.info("Getting messages");
-		List<ChatMessage> messages = chatService.getMessages();
+		String topic = request.getParameter("topic");
+		List<ChatMessage> messages = chatService.getMessages(topic);
 		response.setStatus(HttpServletResponse.SC_OK);
 		response.setContentType("application/json");
 		objectMapper.writeValue(response.getOutputStream(), messages);
 	}
+	// ------------------------ end task 1 ------------------------------------
 
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -48,4 +52,38 @@ public class MessageServlet extends HttpServlet {
 			response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
 		}
 	}
+
+	// Task 3
+	@Override
+	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		String pathInfo = request.getPathInfo();
+
+		if (pathInfo == null || pathInfo.equals("/")) {
+			response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+			return;
+		}
+
+		String[] splits = pathInfo.substring(1).split("/");
+		if (splits.length != 1) {
+			response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+			return;
+		}
+
+		try {
+			int id = Integer.parseInt(splits[0]);
+			boolean success = chatService.removeMessage(id);
+			if (success) {
+				response.setStatus(HttpServletResponse.SC_NO_CONTENT);
+			} else {
+				response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+			}
+		} catch (NumberFormatException e) {
+			response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+		}
+	}
+	// ------------------------ end task 3 ------------------------------------
+
+
+
+
 }

@@ -2,14 +2,26 @@ const BASE_URL = '/api';
 const MEDIA_TYPE = 'application/json';
 
 export const service = {
-	getMessages: function() {
-		return ajax('/messages', 'GET')
+	// Task 4.1
+	getMessages: function(topic) { // Modified to accept a topic parameter
+		let url = '/messages';
+		if (topic) {
+			url += `?topic=${encodeURIComponent(topic)}`; // Append the topic query parameter if provided
+		}
+		return ajax(url, 'GET')
 			.then(response => response.ok ? response.json() : Promise.reject(response));
 	},
+	// Task 4.1 END
 	postMessage: function(message) {
 		return ajax('/messages', 'POST', message)
 			.then(response => response.ok ? response.json() : Promise.reject(response));
+	},
+	// Task 4.2
+	getTopics: function() {
+		return ajax('/topics', 'GET')
+			.then(response => response.ok ? response.json() : Promise.reject(response));
 	}
+	// Task 4.2 END
 };
 
 function ajax(path, method, data, user) {

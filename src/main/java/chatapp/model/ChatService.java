@@ -3,6 +3,7 @@ package chatapp.model;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class ChatService {
 
@@ -30,8 +31,41 @@ public class ChatService {
 		return messages;
 	}
 
+	// Task 1
+	public List<ChatMessage> getMessages(String topic) {
+		// Check if topic is null or empty, return all messages in that case
+		if (topic == null || topic.trim().isEmpty()) {
+			return getMessages(); // return all messages
+		} else {
+			// Filter messages by the specified topic
+			return getMessages().stream()
+					.filter(message -> topic.equals(message.getTopic()))
+					.collect(Collectors.toList());
+		}
+	}
+	// ------------------------ end task 1 ------------------------------------
+
+
+	// Task 2
+	public List<String> getTopics() {
+		return messages.stream()
+				.map(ChatMessage::getTopic) // assuming there is a getTopic method in ChatMessage class
+				.distinct()
+				.collect(Collectors.toList());
+	}
+	// ------------------------ end task 2 ------------------------------------
+
 	public void addMessage(ChatMessage message) {
 		message.setId(++lastId);
 		messages.add(message);
 	}
+
+	// Task 3
+	public boolean removeMessage(int id) {
+		// Assuming there's a method in ChatService to get the message list
+		// This is a simple implementation. The actual logic may involve more complex operations like database access.
+		return messages.removeIf(message -> message.getId() == id);
+	}
+	// ------------------------ end task 3 ------------------------------------
+
 }
