@@ -22,7 +22,7 @@ export class Chat extends Component {
 			if (event.key === 'Enter') this.#postMessage();
 		}
 		this.#setupAutomaticRefresh();
-		this._select('#homeLink').onclick = () => this.#stopAutomaticRefresh(); // Stop refresh when going back home
+		this._select('#homeLink').onclick = () => this.#stopAutomaticRefresh(); // Stop refresh when going back home //task 8
 	}
 
 	#fetchMessages() {
@@ -55,6 +55,7 @@ export class Chat extends Component {
 		input.value = '';
 	}
 
+	// --------------------------- task 8 ------------------------------------
 	#setupAutomaticRefresh() {
 		this.#refreshIntervalId = setInterval(() => this.#fetchMessages(), 10000); // Set up the timer to refresh every 10 seconds
 	}
@@ -70,4 +71,5 @@ export class Chat extends Component {
 	onDestroy() {
 		this.#stopAutomaticRefresh(); // Ensure the timer is cleared when the component is no longer active
 	}
+	// ------------------------ end task 8 ------------------------------------
 }
