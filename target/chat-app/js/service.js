@@ -2,7 +2,7 @@ const BASE_URL = '/api';
 const MEDIA_TYPE = 'application/json';
 
 export const service = {
-	// Task 4.1
+	// ---------------------------- task 4 ------------------------------------
 	getMessages: function(topic) { // Modified to accept a topic parameter
 		let url = '/messages';
 		if (topic) {
@@ -11,17 +11,17 @@ export const service = {
 		return ajax(url, 'GET')
 			.then(response => response.ok ? response.json() : Promise.reject(response));
 	},
-	// Task 4.1 END
+	// ------------------------ end task 4 ------------------------------------
 	postMessage: function(message) {
 		return ajax('/messages', 'POST', message)
 			.then(response => response.ok ? response.json() : Promise.reject(response));
 	},
-	// Task 4.2
+	// ---------------------------- task 4 ------------------------------------
 	getTopics: function() {
 		return ajax('/topics', 'GET')
 			.then(response => response.ok ? response.json() : Promise.reject(response));
 	}
-	// Task 4.2 END
+	// ------------------------ end task 4 ------------------------------------
 };
 
 function ajax(path, method, data, user) {

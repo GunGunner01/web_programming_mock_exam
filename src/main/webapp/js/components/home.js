@@ -1,3 +1,5 @@
+// --------------------------- task 5 ------------------------------------
+
 import { service } from '../service.js';
 import { router } from '../router.js';
 
@@ -56,3 +58,4 @@ export class Home {
         return this.view;
     }
 }
+// ------------------------ end task 5 ------------------------------------
