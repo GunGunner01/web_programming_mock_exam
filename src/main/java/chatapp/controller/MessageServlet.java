@@ -20,7 +20,7 @@ public class MessageServlet extends HttpServlet {
 	private static final ObjectMapper objectMapper = ObjectMapperFactory.createObjectMapper();
 	private static final Logger logger = Logger.getLogger(MessageServlet.class.getName());
 
-	// Task 1
+	// --------------------------- task 1 ------------------------------------
 	// http://localhost:8080/api/messages
 	// http://localhost:8080/api/messages?topic=Java
 	@Override
