@@ -88,11 +88,22 @@ public class ChatService {
 		messages.add(message);
 	}
 
-	// Task 3
+	// ---------------------------- task 3 ------------------------------------
 	public boolean removeMessage(int id) {
 		// Assuming there's a method in ChatService to get the message list
 		// This is a simple implementation. The actual logic may involve more complex operations like database access.
 		return messages.removeIf(message -> message.getId() == id);
+
+		/*
+			Alternativ
+		 */
+//		for (int i = 0; i < messages.size(); i++) {
+//			if (messages.get(i).getId() == id) {
+//				messages.remove(i);
+//				return true; // Return true because the message was successfully removed
+//			}
+//		}
+//		return false; // Return false because no message with the given id was found
 	}
 	// ------------------------ end task 3 ------------------------------------
 

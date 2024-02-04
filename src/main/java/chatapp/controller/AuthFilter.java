@@ -1,3 +1,5 @@
+// --------------------------- task 3 ------------------------------------
+
 package chatapp.controller;
 
 import jakarta.servlet.*;
@@ -52,3 +54,4 @@ public class AuthFilter implements Filter {
         // Clean up any resources here if needed
     }
 }
+// ------------------------ end task 3 ------------------------------------

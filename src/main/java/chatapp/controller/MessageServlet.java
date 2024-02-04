@@ -53,7 +53,7 @@ public class MessageServlet extends HttpServlet {
 		}
 	}
 
-	// Task 3
+	// ---------------------------- task 3 ------------------------------------
 	@Override
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String pathInfo = request.getPathInfo();
